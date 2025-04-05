@@ -23,7 +23,7 @@ const Hero = ({ countdown }) => {
                     <iframe
                         width="100%"
                         height="100%"
-                        src="https://www.youtube.com/embed/Gw_i9XEI0A4"
+                        src="https://www.youtube.com/embed/AN-w3ehcoN8?si=UhTBRzwWD-YYhDku"
                         title="Gameplay Exclusiva 1BB"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -36,10 +36,12 @@ const Hero = ({ countdown }) => {
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                     <a
-                        href="#comprar"
+                        href="https://discord.gg/DwegvnEVRD"
                         className="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-xl font-bold rounded-full shadow-lg shadow-green-500/30 transform hover:scale-105 transition-all duration-200 animate-pulse"
                     >
-                        QUERO DOMINAR AGORA! 🔥
+                        <span className="flex items-center justify-center gap-2">
+                            COMPRAR AGORA
+                        </span>
                     </a>
                     <a
                         href="https://discord.gg/DwegvnEVRD"
