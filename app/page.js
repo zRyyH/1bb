@@ -1,103 +1,147 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import NotificationBar from "./components/NotificationBar";
+import Hero from "./components/Hero";
+import Features from "./components/Features/Features";
+import Testimonials from "./components/Testimonial/Testimonials";
+import DiscordSection from "./components/Discord/DiscordSection";
+import PricingSection from "./components/Pricing/PricingSection";
+import FAQSection from "./components/FAQ/FAQSection";
+import CTA from "./components/CTA";
+import Footer from "./components/Footer";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [countdown, setCountdown] = useState({ hours: 5, minutes: 59, seconds: 59 });
+  const [usersOnline, setUsersOnline] = useState(127);
+  const [stockLeft, setStockLeft] = useState(14);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  useEffect(() => {
+    // Verificar se já existe um contador salvo no localStorage
+    const savedCountdown = localStorage.getItem('1bbCountdown');
+    const savedTimestamp = localStorage.getItem('1bbTimestamp');
+
+    if (savedCountdown && savedTimestamp) {
+      // Calcular quanto tempo passou desde que o contador foi salvo
+      const currentTime = new Date().getTime();
+      const savedTime = parseInt(savedTimestamp, 10);
+      const elapsedSeconds = Math.floor((currentTime - savedTime) / 1000);
+
+      // Recuperar o contador salvo
+      const parsedCountdown = JSON.parse(savedCountdown);
+
+      // Calcular o novo contador, subtraindo o tempo decorrido
+      let totalSeconds =
+        parsedCountdown.hours * 3600 +
+        parsedCountdown.minutes * 60 +
+        parsedCountdown.seconds - elapsedSeconds;
+
+      // Se o contador chegou a zero, gerar um novo tempo aleatório
+      if (totalSeconds <= 0) {
+        totalSeconds = gerarTempoAleatorio();
+      }
+
+      // Converter de volta para horas, minutos e segundos
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      setCountdown({ hours, minutes, seconds });
+    } else {
+      // Se não existir, criar um novo contador com tempo aleatório
+      const totalSeconds = gerarTempoAleatorio();
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      const initialCountdown = { hours, minutes, seconds };
+      localStorage.setItem('1bbCountdown', JSON.stringify(initialCountdown));
+      localStorage.setItem('1bbTimestamp', new Date().getTime().toString());
+      setCountdown(initialCountdown);
+    }
+
+    // Função para gerar um tempo aleatório entre 2 e 8 horas (em segundos)
+    function gerarTempoAleatorio() {
+      // Tempo mínimo: 2 horas (7.200 segundos)
+      // Tempo máximo: 8 horas (28.800 segundos)
+      return Math.floor(Math.random() * (28800 - 7200 + 1)) + 7200;
+    }
+
+    // Recuperar usuários online e estoque do localStorage ou usar valores padrão
+    const savedUsersOnline = localStorage.getItem('1bbUsersOnline');
+    const savedStockLeft = localStorage.getItem('1bbStockLeft');
+
+    if (savedUsersOnline) setUsersOnline(parseInt(savedUsersOnline, 10));
+    if (savedStockLeft) setStockLeft(parseInt(savedStockLeft, 10));
+
+    // Configurar o timer do contador
+    const timer = setInterval(() => {
+      setCountdown(prev => {
+        let newCountdown;
+
+        if (prev.seconds > 0) {
+          newCountdown = { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          newCountdown = { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        } else if (prev.hours > 0) {
+          newCountdown = { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        } else {
+          // Se chegar a zero, gerar um novo tempo aleatório
+          const totalSeconds = gerarTempoAleatorio();
+          const hours = Math.floor(totalSeconds / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+
+          newCountdown = { hours, minutes, seconds };
+        }
+
+        // Salvar o novo contador no localStorage
+        localStorage.setItem('1bbCountdown', JSON.stringify(newCountdown));
+        localStorage.setItem('1bbTimestamp', new Date().getTime().toString());
+
+        return newCountdown;
+      });
+    }, 1000);
+
+    // Simulação de usuários online flutuantes
+    const usersTimer = setInterval(() => {
+      setUsersOnline(prev => {
+        const newValue = Math.floor(prev + (Math.random() * 2 - 0.5));
+        localStorage.setItem('1bbUsersOnline', newValue.toString());
+        return newValue;
+      });
+    }, 5000);
+
+    // Simulação de estoque diminuindo
+    const stockTimer = setInterval(() => {
+      setStockLeft(prev => {
+        let newValue = prev;
+        if (prev > 1 && Math.random() > 0.7) {
+          newValue = prev - 1;
+          localStorage.setItem('1bbStockLeft', newValue.toString());
+        }
+        return newValue;
+      });
+    }, 30000);
+
+    return () => {
+      clearInterval(timer);
+      clearInterval(usersTimer);
+      clearInterval(stockTimer);
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-white">
+      <NotificationBar stockLeft={stockLeft} usersOnline={usersOnline} />
+      <Hero countdown={countdown} />
+      <Features />
+      <Testimonials />
+      <DiscordSection />
+      <PricingSection />
+      <FAQSection />
+      <CTA />
+      <Footer />
     </div>
   );
 }
