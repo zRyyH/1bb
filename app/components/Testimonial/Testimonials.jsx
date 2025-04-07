@@ -44,7 +44,7 @@ const Testimonials = () => {
 
                 <div className="mt-12 text-center">
                     <a
-                        href="https://discord.gg/DwegvnEVRD"
+                        href="https://discord.gg/YTVq2ECu22"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium transition-colors"

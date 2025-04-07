@@ -56,7 +56,7 @@ const DiscordSection = () => {
                             <p className="text-lg">Entre agora e junte-se a mais de 5.000 jogadores que estão dominando o Valorant com o 1BB!</p>
                         </div>
                         <a
-                            href="https://discord.gg/DwegvnEVRD"
+                            href="https://discord.gg/YTVq2ECu22"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="md:w-1/3 px-8 py-4 bg-white text-indigo-700 font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"

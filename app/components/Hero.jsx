@@ -36,7 +36,7 @@ const Hero = ({ countdown }) => {
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                     <a
-                        href="https://discord.gg/DwegvnEVRD"
+                        href="https://discord.gg/YTVq2ECu22"
                         className="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-xl font-bold rounded-full shadow-lg shadow-green-500/30 transform hover:scale-105 transition-all duration-200 animate-pulse"
                     >
                         <span className="flex items-center justify-center gap-2">
@@ -44,7 +44,7 @@ const Hero = ({ countdown }) => {
                         </span>
                     </a>
                     <a
-                        href="https://discord.gg/DwegvnEVRD"
+                        href="https://discord.gg/YTVq2ECu22"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-xl font-bold rounded-full shadow-lg flex items-center justify-center gap-2 transform hover:scale-105 transition-all"

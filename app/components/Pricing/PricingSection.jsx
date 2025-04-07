@@ -14,11 +14,11 @@ const PricingSection = () => {
             color: "purple",
             icon: <FaBolt className="text-2xl" />,
             features: [
-                "Trigger básico para Operator",
-                "Proteção anti-detecção",
-                "Configurações padrão",
-                "Teste sem compromisso",
-                "Acesso ao Discord"
+                "Trigger ultimate para Operator",
+                "Tecnologia indetectável de última geração",
+                "Todas as configurações sem restrições",
+                "Atualizações prioritárias",
+                "Suporte VIP 24/7 por Discord"
             ]
         },
         {
@@ -30,11 +30,11 @@ const PricingSection = () => {
             color: "green",
             icon: <FaLock className="text-2xl" />,
             features: [
-                "Trigger aprimorado para Operator",
-                "Tecnologia anti-detecção Vanguard",
-                "Configurações personalizáveis",
-                "Atualizações semanais",
-                "Suporte básico por Discord"
+                "Trigger ultimate para Operator",
+                "Tecnologia indetectável de última geração",
+                "Todas as configurações sem restrições",
+                "Atualizações prioritárias",
+                "Suporte VIP 24/7 por Discord"
             ]
         },
         {
@@ -46,11 +46,11 @@ const PricingSection = () => {
             color: "blue",
             icon: <FaRocket className="text-2xl" />,
             features: [
-                "Trigger especializado para Operator",
-                "Sistema avançado anti-Vanguard",
-                "Configurações avançadas",
-                "Atualizações constantes",
-                "Suporte prioritário por Discord"
+                "Trigger ultimate para Operator",
+                "Tecnologia indetectável de última geração",
+                "Todas as configurações sem restrições",
+                "Atualizações prioritárias",
+                "Suporte VIP 24/7 por Discord"
             ]
         },
         {
@@ -62,11 +62,11 @@ const PricingSection = () => {
             color: "amber",
             icon: <FaCrown className="text-2xl" />,
             features: [
-                "Trigger pro para Operator",
-                "Tecnologia indetectável exclusiva",
-                "Configurações pro personalizáveis",
-                "Atualizações imediatas",
-                "Suporte premium por Discord"
+                "Trigger ultimate para Operator",
+                "Tecnologia indetectável de última geração",
+                "Todas as configurações sem restrições",
+                "Atualizações prioritárias",
+                "Suporte VIP 24/7 por Discord"
             ]
         },
         {
@@ -176,7 +176,7 @@ const PricingSection = () => {
                                 </ul>
 
                                 <button className={`w-full ${colorClasses.button} hover:opacity-90 py-3 rounded-md font-medium transition-colors flex items-center justify-center group`}>
-                                    <a href="https://discord.gg/DwegvnEVRD" className="flex items-center">
+                                    <a href="https://discord.gg/YTVq2ECu22" className="flex items-center">
                                         <span className="mr-2">Assinar Agora</span>
                                         <FaDiscord className={`transform transition-transform duration-300 ${isHovered ? "translate-x-1" : ""}`} />
                                     </a>
@@ -190,7 +190,7 @@ const PricingSection = () => {
                     <h3 className="text-xl font-bold mb-2">Não sabe qual plano escolher?</h3>
                     <p className="mb-4">Entre em nosso Discord e converse com nossa equipe de suporte para encontrar a melhor opção para você.</p>
                     <a
-                        href="https://discord.gg/DwegvnEVRD"
+                        href="https://discord.gg/YTVq2ECu22"
                         className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 py-2 px-6 rounded-md font-medium transition-colors"
                     >
                         <FaDiscord className="mr-2" /> Entrar no Discord
